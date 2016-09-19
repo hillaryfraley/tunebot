@@ -1,0 +1,276 @@
+<!DOCTYPE HTML>
+    <html>
+        <head>
+            <style>
+                p {
+                  line-height: 100%;
+                }
+            </style>
+        </head>
+    <body onload="initialize()">
+
+        <h1>Tune Bot</h1>
+        <p>JavaScript practice project based on <a href="http://sdkbridge.com/">Peter Gruenbaum</a>'s Udemy course <a href="https://www.udemy.com/coding-for-writers-1-basic-programming/learn/v4/overview" target="_blank">Coding for Writers</a>, inspired by <a href="https://en.wikipedia.org/wiki/Joseph_Weizenbaum">Joseph Weizenbaum</a> and <a href="http://www.ipdb.org/machine.cgi?id=1796" target="_blank">PIN-BOT</a>. Work in progress.</p><br>
+            <p><input id="textbox" size="75" placeholder="The bot asks"/></p>
+            <p><button onclick="submitLine()">Submit</button></p>
+
+            <div id="conversation"></div>
+
+            <script>
+
+                var therapySession;
+
+                const sadResponses = [
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends"];
+
+                const happyResponses = [
+                    "party in the usa",
+                    "tik tok",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends"];
+
+                const lonelyResponses = [
+                    "7 year ache",
+                    "viva luckenbach",
+                    "good morning kwest",
+                    "The Tune Bot recommends"];
+
+                const homesickResponses = [
+                    <a href="https://www.youtube.com/watch?v=YcBOcwgb4OA"></a>,
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends"];
+
+                const afraidResponses = [
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends"];
+
+                const angryResponses = [
+                    "thunderstruck",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends"];
+
+                const disgustedResponses = [
+                    "zombie",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends"];
+
+                const ashamedResponses = [
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends"];
+
+                const jealousResponses = [
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends"];
+
+                const hopefulResponses = [
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends"];
+
+                const confusedResponses = [
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends"];
+
+                const relaxedResponses = [
+                    "this is how we do",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends"];
+
+                const excitedResponses = [
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends"];
+
+                const genericResponses = [
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends",
+                    "The Tune Bot recommends"];
+
+                /**
+                 * Available phrases for starting Tune Bot responses.
+                 * @constant
+                 * @type {}
+                 */
+                const questionStarts = "The Tune Bot recommends ";
+
+                /**
+                 * Called when the browser loads the page.
+                 * Displays initial message from the therapist
+                 * and places the cursor in the textbox so the
+                 * user can begin typing immediately.
+                 * @function
+                 */
+                function initialize() {
+                    therapySession = "<p> I am in your control.</p>";
+                    document.getElementById("textbox").focus();
+                    conversation.innerHTML = therapySession;
+                }
+
+                /**
+                 * Called when the user selects the *Submit* button.
+                 * Chooses a therapist response based on last character
+                 * in the user's text. If the last character is a
+                 * question mark or an exclamation point, the response
+                 * is randomly selected from the options for constants
+                 * questionResponses or exclamationResponses,
+                 * respectively. If the last character is anything
+                 * else, the response is either called from the
+                 * createQuestion function or randomly selected from
+                 * the options for constant genericResponses.
+                 * @function
+                 */
+                function submitLine() {
+                    /**
+                     * Holds user's text from textbox.
+                     */
+                    var patientLine = textbox.value;
+                    therapySession += "<p> <em>" + patientLine + "</em> </p>";
+
+                    /**
+                     * Holds therapist's response.
+                     */
+                    var therapistLine;
+                        if (lastChar(patientLine) == "?") {
+                            therapistLine = randomElement(questionResponses);
+                        } else if (lastChar(patientLine) == "!") {
+                            therapistLine = randomElement(exclamationResponses);
+                        } else {
+                            therapistLine = createQuestion(patientLine);
+                        }
+                        if (therapistLine == null) {
+                            therapistLine = randomElement(genericResponses); 
+                        }
+
+                    therapySession += "<p>" + therapistLine + "</p>";
+
+                    /**
+                     * Empties the textbox each time the user selects
+                     * the *Submit* button.
+                     * @method [<document.getElementByID("textbox").value = "">]
+                     * @param {id} "textbox" - The ID for the textbox
+                     * where the cursor will refocus.
+                     */
+                    document.getElementById("textbox").value = "";
+
+                    /**
+                     * Refocuses the cursor in the textbox each time
+                     * the user selects the *Submit* button.
+                     * @method [<document.getElementByID("textbox").focus()>]
+                     * @param {id} "textbox" - The ID for the textbox
+                     * where the cursor will refocus.
+                     */
+                    document.getElementById("textbox").focus();
+
+                        conversation.innerHTML = therapySession;
+                }
+
+                /**
+                 * Returns a random item in an array.
+                 * @function
+                 * @param {Array} myArray - The array
+                 * from which a random number is returned.
+                 */
+                function randomElement(myArray) {
+                    var index = Math.floor(Math.random() * myArray.length);
+                    return myArray[index];
+                }
+
+                /**
+                 * Returns the last character in a string.
+                 * @function
+                 * @param {string} myString - The string whose last
+                 * character is returned.
+                 * @return {string} The last character in the string.
+                 */
+                function lastChar(myString) {
+                    return myString.substring(myString.length - 1);
+                }
+
+                /**
+                 * Creates a question for the therapist's
+                 * response based on user's text.
+                 * @function
+                 */
+                function createQuestion(patientLine) {
+
+                    /**
+                     * If user's text ends with a period, removes
+                     * the period.
+                     * @param {string} patientLine - The user's
+                     * text.
+                     */
+                    if (lastChar(patientLine) == ".") {
+                        patientLine = patientLine.substring(0, patientLine.length - 1);  
+                    }
+
+                    /** Adds spaces around the user's text. */
+                    var modifiedLine = " " + patientLine + " ";
+
+                    /**
+                     * Checks for first-person words in the user's text.
+                     */
+                    if (modifiedLine.toLowerCase().indexOf("you") != -1) {
+                        return null;
+                    }
+                
+                /**
+                 * Loops through all properties and replaces
+                 * first-person words in user text with
+                 * second-person words as mapped in constant
+                 * povSwitches. This is a work in progress.
+                 */
+                var found = false;
+                    for (var property in povSwitches) {
+                    if (povSwitches.hasOwnProperty(property)) {
+                        var modifiedProperty = " " + property + " ";
+                        if (modifiedLine.indexOf(modifiedProperty) != -1) {
+                            modfiedLine = modifiedLine.replace(modifiedProperty, " " + povSwitches[property] + " ");
+                            found = true;
+                        }
+                    }
+                }
+
+                /**
+                 * If first-person words in the user's text were
+                 * replaced with second-person words, returns a
+                 * question from the therapist.
+                 */
+                if (found) {
+
+                /** Removes trailing space. */
+                    modifiedLine = modifiedLine.substring(0, modifiedLine.length - 1);
+
+                /**
+                 * Returns a question from the therapist bot.
+                 * @param {string} questionStarts - Random item
+                 * selected from the questionStarts constant.
+                 * @return {string} The question from the therapist.
+                 */
+                    return randomElement(questionStarts) + " " + modifiedLine + "?";
+                    }
+
+                /** If no replacement was made, returns null. */
+                return null;
+            }
+                    
+            </script>
+    </body>
+</html>
