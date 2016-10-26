@@ -21,55 +21,55 @@
                 var tunebotSession;
 
                 const sadResponses = [
-                  "sad1",
+                  "sad1 - robert earl keen corpus christi bay",
                   "sad2",
                   "sad3",
                   "sad4"];
 
                 const happyResponses = [
-                  "happy1",
-                  "happy2",
-                  "happy3",
-                  "happy4"];
+                  "happy1 - willie nelson gotta get drunk",
+                  "happy2 - robert earl keen road goes on forever https://www.youtube.com/watch?v=7lTjsU-iJyM",
+                  "happy3 - jerry jeff gettin by",
+                  "happy4 - delbert mcclinton lone star blues https://www.youtube.com/watch?v=LDyTrwq-eQc"];
 
                 const lonelyResponses = [
                   "lonely1",
-                  "lonely2",
+                  "lonely2 - jerry jeff viva luckenbach",
                   "lonely3",
                   "lonely4"];
 
                 const homesickResponses = [
-                  "homesick1",
-                  "homesick2",
-                  "homesick3",
+                  "homesick1 - jerry jeff LA freeway",
+                  "homesick2 - robert earl keen feelin good again",
+                  "homesick3 - jason boland comal county blues https://www.youtube.com/watch?v=sdbrnn1m_KQ",
                   "homesick4"];
 
                 const afraidResponses = [
-                  "afraid1",
+                  "afraid1 - townes van zandt pancho and lefty https://www.youtube.com/watch?v=EnNWH9gE0rU",
                   "afraid2",
                   "afraid3",
                   "afraid4"];
 
                 const angryResponses = [
-                  "angry1",
+                  "angry1 - chris knight house and 90 acres https://www.youtube.com/watch?v=H647qZSYITY",
                   "angry2",
-                  "angry3",
+                  "angry3 - brandi carlile what can i say https://www.youtube.com/watch?v=6GKt6hgOK-o",
                   "angry4"];
 
                 const ashamedResponses = [
-                  "ashamed1",
-                  "ashamed2",
+                  "ashamed1 - R.E.M. man on the moon https://www.youtube.com/watch?v=euqaOu-cOUo",
+                  "ashamed2 - merle haggard big city https://www.youtube.com/watch?v=WWITEPK9vr8",
                   "ashamed3",
                   "ashamed4"];
 
                 const jealousResponses = [
-                  "jealous1",
+                  "jealous1 - chris stapleton was it 26 https://www.youtube.com/watch?v=C2PAm8pj_74",
                   "jealous2",
                   "jealous3",
                   "jealous4"];
 
                 const confusedResponses = [
-                  "confused1",
+                  "confused1 - brandi carlile dying day https://www.youtube.com/watch?v=9_tX3Y5Z-vU",
                   "confused2",
                   "confused3",
                   "confused4"];
@@ -87,7 +87,7 @@
                   "excited4"];
 
                 const genericResponses = [
-                  "generic1",
+                  "generic1 - sweethearts of the rodeo midnight girl sunset town https://www.youtube.com/watch?v=vYFLVbxY8vk",
                   "generic2",
                   "generic3",
                   "generic4"];
@@ -98,13 +98,12 @@
                  * @type {}
                  */
                 const tunebotStarts = [
-                  "The Tune Bot recommends listening to "];
+                  "TUNE-BOT recommends "];
 
                 /**
-                 * Called when the browser loads the page.
-                 * Displays initial message from the therapist
-                 * and places the cursor in the textbox so the
-                 * user can begin typing immediately.
+                 * Called when the browser loads the page. Displays initial
+                 * message from TUNE-BOT and places the cursor in the
+                 * textbox so the player can begin typing immediately.
                  * @function
                  */
                 function initialize() {
@@ -114,7 +113,7 @@
                 }
 
                 /**
-                 * Called when the user selects the *Submit* button.
+                 * Called when the player selects the *Submit* button.
                  * Chooses a TUNE-BOT response based on strings in the
                  * player's text, with responses randomly selected from
                  * the options for constants. If the player enters an
@@ -124,7 +123,7 @@
                  */
                 function submitLine() {
                     /**
-                     * Holds user's text from textbox.
+                     * Holds player's text from textbox.
                      */
                     var playerLine = textbox.value;
 
@@ -173,7 +172,7 @@
                     tunebotSession += "<p>" + tunebotStarts + tunebotLine + "</p>";
 
                     /**
-                     * Empties the textbox each time the user selects
+                     * Clears the entry in the textbox each time the player selects
                      * the *Submit* button.
                      * @method [<document.getElementByID("textbox").value = "">]
                      * @param {id} "textbox" - The ID for the textbox
@@ -182,8 +181,8 @@
                     document.getElementById("textbox").value = "";
 
                     /**
-                     * Refocuses the cursor in the textbox each time
-                     * the user selects the *Submit* button.
+                     * Refocuses the cursor in the textbox each time the player
+                     * selects the *Submit* button.
                      * @method [<document.getElementByID("textbox").focus()>]
                      * @param {id} "textbox" - The ID for the textbox
                      * where the cursor will refocus.
