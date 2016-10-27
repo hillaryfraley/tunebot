@@ -21,56 +21,53 @@
                 var tunebotSession;
 
                 const sadResponses = [
-                  "sad1 - robert earl keen corpus christi bay",
-                  "sad2",
-                  "sad3",
-                  "sad4"];
+                  "sad1 - robert earl keen corpus christi bay https://www.youtube.com/watch?v=etFZnKvswZE",
+                  "sad2 - townes van zandt still lookin for you https://www.youtube.com/watch?v=jwRfr6jMRfc",
+                  "sad3 - lucinda williams side of the road https://www.youtube.com/watch?v=AFMzMZIzmls",
+                  "sad4 - kacey musgraves die fun https://www.youtube.com/watch?v=KhXWlof7RLY",
+                  "sad5 - guy clark desperados waiting for a train https://www.youtube.com/watch?v=dFb1lGMvS3I"];
 
                 const happyResponses = [
-                  "happy1 - willie nelson gotta get drunk",
-                  "happy2 - robert earl keen road goes on forever https://www.youtube.com/watch?v=7lTjsU-iJyM",
-                  "happy3 - jerry jeff gettin by",
+                  "happy1 - willie nelson gotta get drunk https://www.youtube.com/watch?v=WqZDbTYtjz8",
+                  "happy2",
+                  "happy3 - jerry jeff gettin by https://www.youtube.com/watch?v=UxJoL_f0i_c",
                   "happy4 - delbert mcclinton lone star blues https://www.youtube.com/watch?v=LDyTrwq-eQc"];
 
                 const lonelyResponses = [
-                  "lonely1",
-                  "lonely2 - jerry jeff viva luckenbach",
+                  "lonely1 - lucinda williams crescent city https://www.youtube.com/watch?v=NR-_0CkSlKY",
+                  "lonely2 - jerry jeff viva luckenbach https://www.youtube.com/watch?v=2mdaKVKyNzs",
                   "lonely3",
                   "lonely4"];
 
                 const homesickResponses = [
-                  "homesick1 - jerry jeff LA freeway",
-                  "homesick2 - robert earl keen feelin good again",
+                  "homesick1 - guy clark LA freeway https://www.youtube.com/watch?v=yTwUpkEK6yk",
+                  "homesick2 - robert earl keen feelin good again https://www.youtube.com/watch?v=IV2FJG3YYyc",
                   "homesick3 - jason boland comal county blues https://www.youtube.com/watch?v=sdbrnn1m_KQ",
                   "homesick4"];
 
                 const afraidResponses = [
                   "afraid1 - townes van zandt pancho and lefty https://www.youtube.com/watch?v=EnNWH9gE0rU",
-                  "afraid2",
-                  "afraid3",
+                  "afraid2 - emmylou harris born to run https://www.youtube.com/watch?v=PPq4LGzBVV0",
+                  "afraid3 - mary chapin carpenter i take my chances https://www.youtube.com/watch?v=2kLRa68_GJU",
                   "afraid4"];
 
                 const angryResponses = [
-                  "angry1 - chris knight house and 90 acres https://www.youtube.com/watch?v=H647qZSYITY",
-                  "angry2",
+                  "angry1 - merle haggard big city https://www.youtube.com/watch?v=WWITEPK9vr8",
+                  "angry2 - gillian welch look at miss ohio https://www.youtube.com/watch?v=6TofdvRE0qo",
                   "angry3 - brandi carlile what can i say https://www.youtube.com/watch?v=6GKt6hgOK-o",
-                  "angry4"];
-
-                const ashamedResponses = [
-                  "ashamed1 - R.E.M. man on the moon https://www.youtube.com/watch?v=euqaOu-cOUo",
-                  "ashamed2 - merle haggard big city https://www.youtube.com/watch?v=WWITEPK9vr8",
-                  "ashamed3",
-                  "ashamed4"];
+                  "angry4 - lucinda williams seeing black https://www.youtube.com/watch?v=CycqK0zDmJk",
+                  "angry5 - fats domino blue monday https://www.youtube.com/watch?v=5qz94yveXgQ",
+                  "angry6 - "];
 
                 const jealousResponses = [
                   "jealous1 - chris stapleton was it 26 https://www.youtube.com/watch?v=C2PAm8pj_74",
-                  "jealous2",
-                  "jealous3",
+                  "jealous2 - son volt back into your world https://www.youtube.com/watch?v=uur3WAGmMN8",
+                  "jealous3 - sweethearts of the rodeo midnight girl sunset town https://www.youtube.com/watch?v=vYFLVbxY8vk",
                   "jealous4"];
 
                 const confusedResponses = [
                   "confused1 - brandi carlile dying day https://www.youtube.com/watch?v=9_tX3Y5Z-vU",
-                  "confused2",
+                  "confused2 - R.E.M. man on the moon https://www.youtube.com/watch?v=euqaOu-cOUo",
                   "confused3",
                   "confused4"];
 
@@ -87,9 +84,9 @@
                   "excited4"];
 
                 const genericResponses = [
-                  "generic1 - sweethearts of the rodeo midnight girl sunset town https://www.youtube.com/watch?v=vYFLVbxY8vk",
-                  "generic2",
-                  "generic3",
+                  "generic1",
+                  "generic2 - robert earl keen road goes on forever https://www.youtube.com/watch?v=7lTjsU-iJyM",
+                  "generic3 - ray wylie hubbard and jerry jeff walker up against the wall redneck mother https://www.youtube.com/watch?v=SKiNy3O2who",
                   "generic4"];
 
                 /**
@@ -149,8 +146,6 @@
                             tunebotLine = randomElement(angryResponses);
                         } else if (playerLine.includes("mad")) {
                             tunebotLine = randomElement(angryResponses);
-                        } else if (playerLine.includes("shame")) {
-                            tunebotLine = randomElement(ashamedResponses);
                         } else if (playerLine.includes("jeal")) {
                             tunebotLine = randomElement(jealousResponses);
                         } else if (playerLine.includes("env")) {
